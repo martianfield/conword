@@ -1,0 +1,1 @@
+module.exports.months = require(__dirname + '/src/months')
