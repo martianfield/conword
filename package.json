@@ -1,0 +1,22 @@
+{
+  "name": "conword",
+  "version": "0.1.0",
+  "description": "Convert things to words",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martianfield/conword.git"
+  },
+  "author": "Martin Imfeld <martin.imfeld@gmail.com> (http://martianfield.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martianfield/conword/issues"
+  },
+  "homepage": "https://github.com/martianfield/conword#readme",
+  "devDependencies": {
+    "chai": "^3.5.0"
+  }
+}
