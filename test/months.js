@@ -63,6 +63,17 @@ describe('months', () => {
       expect(result.periods).to.deep.equal(["May-June"])
     })
 
+    it('one period at end of year', () => {
+      // arrange
+      let months = [11, 12]
+      let options = { language:'en', zeroBased:false, connector:'-' }
+      // act
+      let result = m2p(months, options)
+      // assert
+      expect(result.periods.length).to.equal(1)
+      expect(result.periods).to.deep.equal(["November-December"])
+    })
+
     it('several periods inside year', () => {
       // arrange
       let months = [5,6,9,10]
