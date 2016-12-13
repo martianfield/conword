@@ -103,7 +103,8 @@ describe('months', () => {
       // act
       let result = m2p(months, options)
       // assert
-      expect(result.periods).to.deep.equal(["January-December"])
+      //expect(result.periods).to.deep.equal(["January-December"])
+      expect(result.periods).to.deep.equal(["all year"])
     })
 
     it('full year (in a mess)', () => {
@@ -113,7 +114,8 @@ describe('months', () => {
       // act
       let result = m2p(months, options)
       // assert
-      expect(result.periods).to.deep.equal(["January-December"])
+      //expect(result.periods).to.deep.equal(["January-December"])
+      expect(result.periods).to.deep.equal(["all year"])
     })
 
   })

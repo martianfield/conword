@@ -6,7 +6,15 @@ const monthNames = {
   fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
   it: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'],
   es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-}
+};
+
+const allYearText = {
+  en: "all year",
+  de: "ganzjährig",
+  fr: "toute l'année",
+  it: "tutto l'anno",
+  es: "todo el año"
+};
 
 module.exports = function (months, options) {
   // fix options
@@ -86,7 +94,10 @@ module.exports = function (months, options) {
       start: monthNames[language][periods[i].start],
       end: monthNames[language][periods[i].end]
     };
-    if(period.start !== period.end) {
+    if(periods[i].start === 0 && periods[i].end === 11) {
+      result.periods.push(allYearText[language])
+    }
+    else if(period.start !== period.end) {
       result.periods.push(`${period.start}${connector}${period.end}`);
     }
     else {

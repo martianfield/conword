@@ -11,9 +11,10 @@ const dayNames = {
 module.exports = function (days, options) {
   // fix options
   options = options ? options : { language:'en', zeroBased:false, connector:'-' };
-  let zeroBased = options.zeroBased ? options.zeroBased : false;
-  let connector = options.connector ? options.connector : '-';
-  let language = options.language ? options.language : 'en';
+  let zeroBased, connector, language
+  zeroBased = options.zeroBased ? options.zeroBased : false;
+  connector = options.connector ? options.connector : '-';
+  language = options.language ? options.language : 'en';
   language = dayNames.hasOwnProperty(language) ? language : 'en';
 
   // default result
