@@ -11,7 +11,9 @@ const dayNames = {
 module.exports = function (days, options) {
   // fix options
   options = options ? options : { language:'en', zeroBased:false, connector:'-' };
-  let zeroBased, connector, language
+  var zeroBased
+  var connector
+  var language
   zeroBased = options.zeroBased ? options.zeroBased : false;
   connector = options.connector ? options.connector : '-';
   language = options.language ? options.language : 'en';
