@@ -20,16 +20,16 @@ module.exports = function (days, options) {
   language = dayNames.hasOwnProperty(language) ? language : 'en';
 
   // default result
-  let result = {
+  var result = {
     days: [],
     periods: []
   }
 
   // transform days to matrix
-  let matrix = [];
-  let allWeek = true;
-  let modificator = zeroBased ? 0 : 1;
-  for(let i=0; i<7; i+=1) {
+  var matrix = [];
+  var allWeek = true;
+  var modificator = zeroBased ? 0 : 1;
+  for(var i=0; i<7; i+=1) {
     if(days.find(day => { return day === i + (modificator)})) {
       matrix.push(true);
     }
@@ -40,21 +40,21 @@ module.exports = function (days, options) {
   }
 
   // available month names
-  for( let i=0; i<7; i+=1) {
+  for( var i=0; i<7; i+=1) {
     if(matrix[i]) {
       result.days.push(dayNames[language][i]);
     }
   }
 
   // periods
-  let periods = [];
+  var periods = [];
   if(allWeek) {
     periods.push({start:0, end:6});
   }
   else {
-    let currentPeriod = {}
-    for( let i=0; i<7; i+=1) {
-      let daySelected = matrix[i];
+    var currentPeriod = {}
+    for( var i=0; i<7; i+=1) {
+      var daySelected = matrix[i];
       if(daySelected) {
         // start a new period
         if(currentPeriod.start === undefined) {
@@ -77,15 +77,15 @@ module.exports = function (days, options) {
     }
     // check if the last period crossed the week boundary ... combine the first and last period into one
     if(matrix[6] && matrix[0]) {
-      let first = periods.shift();
+      var first = periods.shift();
       periods[periods.length-1].end = first.end;
     }
   }
 
 
   // make words out of numbers
-  for(let i=0; i<periods.length; i+=1) {
-    let period = {
+  for(var i=0; i<periods.length; i+=1) {
+    var period = {
       start: dayNames[language][periods[i].start],
       end: dayNames[language][periods[i].end]
     }

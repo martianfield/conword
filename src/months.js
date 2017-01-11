@@ -19,22 +19,22 @@ const allYearText = {
 module.exports = function (months, options) {
   // fix options
   options = options ? options : { language:'en', zeroBased:false, connector:'-' };
-  let zeroBased = options.zeroBased ? options.zeroBased : false;
-  let connector = options.connector ? options.connector : '-';
-  let language = options.language ? options.language : 'en';
+  var zeroBased = options.zeroBased ? options.zeroBased : false;
+  var connector = options.connector ? options.connector : '-';
+  var language = options.language ? options.language : 'en';
   language = monthNames.hasOwnProperty(language) ? language : 'en';
 
   // default result
-  let result = {
+  var result = {
     months: [],
     periods: []
   };
 
   // transform months to matrix
-  let matrix = [];
-  let allYear = true;
-  let modificator = zeroBased ? 0 : 1;
-  for(let i=0; i<12; i+=1) {
+  var matrix = [];
+  var allYear = true;
+  var modificator = zeroBased ? 0 : 1;
+  for(var i=0; i<12; i+=1) {
     if(months.find(month => { return month === i + (modificator)})) {
       matrix.push(true);
     }
@@ -45,21 +45,21 @@ module.exports = function (months, options) {
   }
 
   // available month names
-  for( let i=0; i<12; i+=1) {
+  for( var i=0; i<12; i+=1) {
     if(matrix[i]) {
       result.months.push(monthNames[language][i]);
     }
   }
 
   // periods
-  let periods = []
+  var periods = []
   if(allYear) {
     periods.push({start:0, end:11});
   }
   else {
-    let currentPeriod = {}
-    for( let i=0; i<12; i+=1) {
-      let monthSelected = matrix[i]
+    var currentPeriod = {}
+    for( var i=0; i<12; i+=1) {
+      var monthSelected = matrix[i]
       if(monthSelected) {
         // start a new period
         if(currentPeriod.start === undefined) {
@@ -82,15 +82,15 @@ module.exports = function (months, options) {
     }
     // check if the last period crossed the year boundary ... combine the first and last period into one
     if(matrix[11] && matrix[0]) {
-      let first = periods.shift();
+      var first = periods.shift();
       periods[periods.length-1].end = first.end;
     }
   }
 
 
   // make words out of numbers
-  for(let i=0; i<periods.length; i+=1) {
-    let period = {
+  for(var i=0; i<periods.length; i+=1) {
+    var period = {
       start: monthNames[language][periods[i].start],
       end: monthNames[language][periods[i].end]
     };
